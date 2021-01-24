@@ -15,6 +15,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue'
+
 export interface ColumnProps {
   id: number
   title: string
@@ -31,6 +32,7 @@ export default defineComponent({
     }
   },
   setup(props) {
+    // 如果拿到的数据中avatar为空，那么添加默认图片
     const columnList = computed(() => {
       return props.list.map(column => {
         if (!column.avatar) {
