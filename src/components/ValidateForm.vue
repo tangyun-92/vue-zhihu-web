@@ -24,8 +24,10 @@ export default defineComponent({
       const result = funcArr.map(func => func()).every(result => result)
       context.emit('form-submit', result)
     }
-    const callback = (func: any) => {
-      funcArr.push(func)
+    const callback = (func: ValidateFunc | undefined) => {
+      if (func) {
+        funcArr.push(func)
+      }
     }
     emitter.on('form-item-created', callback)
     onUnmounted(() => {
