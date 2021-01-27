@@ -3,7 +3,7 @@
     <a class="navbar-brand mx-4" href="#">知乎专栏</a>
     <ul v-if="!user.isLogin" class="list-inline mb-0">
       <li class="list-inline-item">
-        <a href="#" class="btn btn-outline-light my-2">登录</a>
+        <a href="/login" class="btn btn-outline-light my-2">登录</a>
       </li>
       <li class="list-inline-item">
         <a href="#" class="btn btn-outline-light my-2 mx-4">注册</a>
