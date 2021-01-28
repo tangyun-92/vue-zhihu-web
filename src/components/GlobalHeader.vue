@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-dark bg-primary justify-content-between mb-4">
-    <a class="navbar-brand mx-4" href="#">知乎专栏</a>
+    <a class="navbar-brand mx-4" href="/">知乎专栏</a>
     <ul v-if="!user.isLogin" class="list-inline mb-0">
       <li class="list-inline-item">
         <a href="/login" class="btn btn-outline-light my-2">登录</a>

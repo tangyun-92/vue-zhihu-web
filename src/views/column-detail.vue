@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import { GlobalDataProps } from '../store'
@@ -32,7 +32,11 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const store = useStore<GlobalDataProps>()
-    const currentId = Number(route.params.id)
+    const currentId = route.params.id
+    onMounted(() => {
+      store.dispatch('fetchColumn', currentId)
+      store.dispatch('fetchPosts', currentId)
+    })
     const column = computed(() => {
       return store.getters.getColumnById(currentId)
     })

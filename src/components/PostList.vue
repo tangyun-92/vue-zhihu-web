@@ -12,7 +12,8 @@
             <img
               :src="post.image"
               :alt="post.title"
-              class="rounded-lg w-100"
+              class="rounded-lg"
+              style="height: 80px;"
             />
           </div>
           <p :class="{ 'col-8': post.image }" class="text-muted">
@@ -27,7 +28,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { PostProps } from '../testData'
+import { PostProps } from '../store'
 
 export default defineComponent({
   props: {
