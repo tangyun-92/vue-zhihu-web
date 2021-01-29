@@ -57,16 +57,16 @@ export default defineComponent({
     ]
     const onFormSubmit = (result: boolean) => {
       if (result) {
-        const { columnId } = store.state.user
-        const newPost: PostProps = {
-          _id: '1',
-          title: titleVal.value,
-          content: contentVal.value,
-          columnId,
-          createdAt: new Date().toLocaleString()
-        }
-        store.commit('createPost', newPost)
-        router.push(`/column/${columnId}`)
+        // const { columnId } = store.state.user
+        // const newPost: PostProps = {
+        //   _id: '1',
+        //   title: titleVal.value,
+        //   content: contentVal.value,
+        //   // columnId,
+        //   createdAt: new Date().toLocaleString()
+        // }
+        // store.commit('createPost', newPost)
+        // router.push(`/column/${columnId}`)
       }
     }
     const uploadCheck = (file: File) => {

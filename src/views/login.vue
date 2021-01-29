@@ -36,6 +36,7 @@ import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import ValidateInput, { RulesProp } from '../components/ValidateInput.vue'
 import ValidateForm from '../components/ValidateForm.vue'
+import { GlobalDataProps } from '@/store'
 
 export default defineComponent({
   name: 'Login',
@@ -46,10 +47,10 @@ export default defineComponent({
   setup() {
     const emailVal = ref('')
     const router = useRouter()
-    const store = useStore()
+    const store = useStore<GlobalDataProps>()
     const emailRules: RulesProp = [
-      { type: 'required', message: '电子邮箱地址不能为空' },
-      { type: 'email', message: '请输入正确的电子邮箱地址' }
+      { type: 'required', message: '电子邮箱地址不能为空' }
+      // { type: 'email', message: '请输入正确的电子邮箱地址' }
     ]
     const passwordVal = ref('')
     const passwordRules: RulesProp = [
@@ -57,8 +58,14 @@ export default defineComponent({
     ]
     const onFormSubmit = (result: boolean) => {
       if (result) {
-        router.push('/')
-        store.commit('login')
+        const data = { name: emailVal.value, password: passwordVal.value }
+        store.dispatch('loginAndFetch', data).then((res) => {
+          if (res.code === 1) {
+            router.push('/')
+          }
+        }).catch(e => {
+          console.log(e)
+        })
       }
     }
 

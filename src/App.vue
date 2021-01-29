@@ -1,7 +1,12 @@
 <template>
   <div class="container">
     <global-header :user="currentUser"></global-header>
-    <Loader text="加载中..." background="rgba(0,0,0, 0.7)" v-if="isLoading"></Loader>
+    <h1>{{ error.message }}</h1>
+    <Loader
+      text="加载中..."
+      background="rgba(0,0,0, 0.7)"
+      v-if="isLoading"
+    ></Loader>
     <router-view></router-view>
     <footer class="text-center py-4 text-secondary bg-light mt-6">
       <small>
@@ -35,9 +40,11 @@ export default defineComponent({
     const store = useStore<GlobalDataProps>()
     const currentUser = computed(() => store.state.user)
     const isLoading = computed(() => store.state.loading)
+    const error = computed(() => store.state.error)
     return {
       currentUser,
-      isLoading
+      isLoading,
+      error
     }
   }
 })

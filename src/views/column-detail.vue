@@ -34,7 +34,9 @@ export default defineComponent({
     const store = useStore<GlobalDataProps>()
     const currentId = route.params.id
     onMounted(() => {
-      store.dispatch('fetchColumn', currentId)
+      store.dispatch('fetchColumn', currentId).then(res => {
+        console.log(res)
+      })
       store.dispatch('fetchPosts', currentId)
     })
     const column = computed(() => {
